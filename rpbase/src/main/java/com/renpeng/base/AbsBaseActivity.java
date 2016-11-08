@@ -39,6 +39,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
 
     }
 
+    public void setGitHub(){}
     protected abstract void initView();
 
     @Override
