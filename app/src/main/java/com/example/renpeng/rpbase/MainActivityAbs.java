@@ -20,6 +20,7 @@ public class MainActivityAbs extends AbsBaseNormalListActivity {
         list.add("wwwww");
         list.add("tttttt");
         setDataList(list);
+        setActivityStatus(CUSTOM_STATUS);
     }
 
     @Override
