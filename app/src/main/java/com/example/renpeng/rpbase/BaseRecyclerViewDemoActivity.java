@@ -3,7 +3,7 @@ package com.example.renpeng.rpbase;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.renpeng.base.AbsRecyclerViewActivity;
+import com.renpeng.base.AbsBaseRecyclerViewActivity;
 import com.renpeng.base.adapter.IBaseRecyclerViewItem;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by renpeng on 16/11/9.
  */
-public class RecyclerViewDemoActivity extends AbsRecyclerViewActivity {
+public class BaseRecyclerViewDemoActivity extends AbsBaseRecyclerViewActivity {
     @Override
     public IBaseRecyclerViewItem loadIBaseRecyclerViewItem() {
         return new ItemRecycleView(this);

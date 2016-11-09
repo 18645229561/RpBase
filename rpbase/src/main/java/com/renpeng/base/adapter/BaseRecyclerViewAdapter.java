@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.renpeng.base.AbsRecyclerViewActivity;
+import com.renpeng.base.AbsBaseRecyclerViewActivity;
 
 import java.util.List;
 
@@ -15,13 +15,13 @@ import java.util.List;
 public class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
 
     private List dataList;
-    private AbsRecyclerViewActivity mAbsRecyclerViewActivity;
+    private AbsBaseRecyclerViewActivity mAbsBaseRecyclerViewActivity;
 
     private IBaseRecyclerViewItem iBaseRecyclerViewItem;
 
 
-    public BaseRecyclerViewAdapter(AbsRecyclerViewActivity mAbsRecyclerViewActivity){
-        this.mAbsRecyclerViewActivity = mAbsRecyclerViewActivity;
+    public BaseRecyclerViewAdapter(AbsBaseRecyclerViewActivity mAbsBaseRecyclerViewActivity){
+        this.mAbsBaseRecyclerViewActivity = mAbsBaseRecyclerViewActivity;
     }
 
     public void setDataList(List dataList){
@@ -30,7 +30,7 @@ public class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseRecyclerVi
 
     @Override
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        iBaseRecyclerViewItem = mAbsRecyclerViewActivity.loadIBaseRecyclerViewItem();
+        iBaseRecyclerViewItem = mAbsBaseRecyclerViewActivity.loadIBaseRecyclerViewItem();
         View itemView = LayoutInflater.from(parent.getContext()).inflate(iBaseRecyclerViewItem.getView(),null);
         BaseRecyclerViewHolder baseRecyclerViewHolder = new BaseRecyclerViewHolder(itemView,iBaseRecyclerViewItem);
         setOnClickListener(itemView);

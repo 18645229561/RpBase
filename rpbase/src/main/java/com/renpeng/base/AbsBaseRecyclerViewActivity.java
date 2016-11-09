@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by renpeng on 16/11/9.
  */
-public abstract class AbsRecyclerViewActivity extends AbsBaseActivity {
+public abstract class AbsBaseRecyclerViewActivity extends AbsBaseActivity {
     private RecyclerView mRecyclerView;
 
     private BaseRecyclerViewAdapter mBaseRecyclerViewAdapter;
