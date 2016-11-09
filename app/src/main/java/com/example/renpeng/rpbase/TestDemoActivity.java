@@ -5,7 +5,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.renpeng.base.AbsBaseNormalListActivity;
-import com.renpeng.base.IBaseItemContent;
+import com.renpeng.base.adapter.IBaseItemContent;
 
 import java.util.ArrayList;
 import java.util.List;

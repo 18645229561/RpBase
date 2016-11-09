@@ -1,4 +1,4 @@
-package com.renpeng.base;
+package com.renpeng.base.adapter;
 
 import android.view.View;
 

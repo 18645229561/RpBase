@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.example.rpbase.R;
+import com.renpeng.base.adapter.IBaseItemContent;
 
 import java.util.ArrayList;
 import java.util.List;

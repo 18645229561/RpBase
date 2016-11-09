@@ -3,7 +3,7 @@ package com.example.renpeng.rpbase;
 import android.view.View;
 import android.widget.TextView;
 
-import com.renpeng.base.IBaseItemContent;
+import com.renpeng.base.adapter.IBaseItemContent;
 
 /**
  * Created by renpeng on 16/11/8.
