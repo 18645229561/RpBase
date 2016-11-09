@@ -10,7 +10,7 @@ import com.renpeng.base.IitemContent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivityAbs extends AbsBaseNormalListActivity {
+public class TestDemoActivity extends AbsBaseNormalListActivity {
 
     List<String> list = new ArrayList<>();
 
