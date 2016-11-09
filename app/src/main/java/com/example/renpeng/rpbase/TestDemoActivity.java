@@ -5,7 +5,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.renpeng.base.AbsBaseNormalListActivity;
-import com.renpeng.base.IitemContent;
+import com.renpeng.base.IBaseItemContent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class TestDemoActivity extends AbsBaseNormalListActivity {
     }
 
     @Override
-    protected IitemContent loadItemContent() {
+    protected IBaseItemContent loadItemContent() {
         return new demoAdapter();
     }
 

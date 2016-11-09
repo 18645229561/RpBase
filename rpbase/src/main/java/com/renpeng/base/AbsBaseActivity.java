@@ -140,9 +140,9 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        onBaseActivityDestory();
+        onBaseActivityDestroy();
 
     }
 
-    protected void onBaseActivityDestory(){}
+    protected void onBaseActivityDestroy(){}
 }

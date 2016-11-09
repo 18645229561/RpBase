@@ -34,7 +34,7 @@ public abstract class AbsBaseNormalListActivity extends AbsBaseActivity {
 
     protected abstract void initBaseView();
 
-    protected abstract IitemContent loadItemContent();
+    protected abstract IBaseItemContent loadItemContent();
 
 
 
@@ -55,7 +55,7 @@ public abstract class AbsBaseNormalListActivity extends AbsBaseActivity {
         });
     }
 
-    protected IitemContent loadItemContentByType(int itemType){
+    protected IBaseItemContent loadItemContentByType(int itemType){
         return null;
     }
 
@@ -138,24 +138,24 @@ public abstract class AbsBaseNormalListActivity extends AbsBaseActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            IitemContent iitemContent = null;
+            IBaseItemContent IBaseItemContent = null;
             if(convertView == null){
                 if(getViewTypeCount() == 1){
-                    iitemContent = loadItemContent();
+                    IBaseItemContent = loadItemContent();
                 }else{
-                    iitemContent = loadItemContentByType(getItemViewType(position));
+                    IBaseItemContent = loadItemContentByType(getItemViewType(position));
                 }
-                convertView = LayoutInflater.from(getBaseContext()).inflate(iitemContent.getView(),null);
-                iitemContent.initView(convertView);
-                convertView.setTag(iitemContent);
+                convertView = LayoutInflater.from(getBaseContext()).inflate(IBaseItemContent.getView(),null);
+                IBaseItemContent.initView(convertView);
+                convertView.setTag(IBaseItemContent);
             }
 
-            if(iitemContent == null){
-                iitemContent = (IitemContent) convertView.getTag();
+            if(IBaseItemContent == null){
+                IBaseItemContent = (IBaseItemContent) convertView.getTag();
             }
 
             if(dataList != null && dataList.size() > 0 && dataList.get(position) != null){
-                iitemContent.bindData(dataList.get(position));
+                IBaseItemContent.bindData(dataList.get(position));
             }
 
             return convertView;

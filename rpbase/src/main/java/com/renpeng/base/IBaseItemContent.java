@@ -5,7 +5,7 @@ import android.view.View;
 /**
  * Created by renpeng on 16/11/8.
  */
-public  interface IitemContent<T> {
+public  interface IBaseItemContent<T> {
 
     void initView(View convertView);
 
