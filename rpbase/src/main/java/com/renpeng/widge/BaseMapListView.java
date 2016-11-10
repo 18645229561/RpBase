@@ -110,15 +110,19 @@ public class BaseMapListView extends LinearLayout {
         }
 
         @Override
+        public int getItemViewType(int position) {
+            return mMapItem.getKeyViewType(position);
+        }
+
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             IBaseItemContent IBaseItemContent = null;
             if(convertView == null){
-                if(getViewTypeCount() == 1){
+                if(mMapItem.getKeyViewTypeCount() == 1){
                     IBaseItemContent = mMapItem.getKeyItem();
+                } else{
+                    IBaseItemContent = mMapItem.getKeyItemByType(getItemViewType(position));
                 }
-//                else{
-//                    IBaseItemContent = loadItemContentByType(getItemViewType(position));
-//                }
                 convertView = LayoutInflater.from(parent.getContext()).inflate(IBaseItemContent.getView(),null);
                 IBaseItemContent.initView(convertView);
                 convertView.setTag(IBaseItemContent);
@@ -155,15 +159,19 @@ public class BaseMapListView extends LinearLayout {
         }
 
         @Override
+        public int getItemViewType(int position) {
+            return mMapItem.getValueViewType(position);
+        }
+
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             IBaseItemContent IBaseItemContent = null;
             if(convertView == null){
-                if(getViewTypeCount() == 1){
+                if(mMapItem.getValueViewTypeCount() == 1){
                     IBaseItemContent = mMapItem.getValueItem();
+                } else{
+                    IBaseItemContent = mMapItem.getValueItemByType(getItemViewType(position));
                 }
-//                else{
-//                    IBaseItemContent = loadItemContentByType(getItemViewType(position));
-//                }
                 convertView = LayoutInflater.from(parent.getContext()).inflate(IBaseItemContent.getView(),null);
                 IBaseItemContent.initView(convertView);
                 convertView.setTag(IBaseItemContent);
@@ -186,7 +194,22 @@ public class BaseMapListView extends LinearLayout {
 
         IBaseItemContent getKeyItem();
 
+        IBaseItemContent getKeyItemByType(int type);
+
+        int getKeyViewTypeCount();
+
+        int getKeyViewType(int position);
+
+
+
         IBaseItemContent getValueItem();
+
+        IBaseItemContent getValueItemByType(int type);
+
+        int getValueViewTypeCount();
+
+        int getValueViewType(int position);
+
 
     }
 }
