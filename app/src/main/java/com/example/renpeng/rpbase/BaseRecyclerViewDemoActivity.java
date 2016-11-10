@@ -1,12 +1,11 @@
 package com.example.renpeng.rpbase;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.renpeng.base.AbsBaseActivity;
+import com.renpeng.base.adapter.IBaseItemContent;
 import com.renpeng.widge.BaseMapListView;
 import com.renpeng.widge.entity.MapItemDataEntity;
 
@@ -58,19 +57,14 @@ public class BaseRecyclerViewDemoActivity extends AbsBaseActivity implements Bas
     }
 
     @Override
-    public View getKeyItemView(View convertView, String s, int position) {
-        View view = LayoutInflater.from(this).inflate(R.layout.item,null);
-        TextView textView = (TextView) view.findViewById(R.id.rr);
-        textView.setText(s);
-        return view;
+    public IBaseItemContent getKeyItem() {
+        return new demoAdapter();
     }
 
     @Override
-    public View getValueItemView(View convertView, String s, int position) {
-        View view = LayoutInflater.from(this).inflate(R.layout.item,null);
-        TextView textView = (TextView) view.findViewById(R.id.rr);
-        textView.setText(s);
-        return view;
+    public IBaseItemContent getValueItem() {
+        return new demoAdapter();
     }
+
 
 }

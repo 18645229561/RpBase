@@ -2,6 +2,7 @@ package com.renpeng.widge;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.rpbase.R;
+import com.renpeng.base.adapter.IBaseItemContent;
 import com.renpeng.widge.entity.MapItemDataEntity;
 
 import java.util.List;
@@ -109,7 +111,24 @@ public class BaseMapListView extends LinearLayout {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return mMapItem.getKeyItemView(convertView,list.get(position).k,position);
+            IBaseItemContent IBaseItemContent = null;
+            if(convertView == null){
+                if(getViewTypeCount() == 1){
+                    IBaseItemContent = mMapItem.getKeyItem();
+                }
+//                else{
+//                    IBaseItemContent = loadItemContentByType(getItemViewType(position));
+//                }
+                convertView = LayoutInflater.from(parent.getContext()).inflate(IBaseItemContent.getView(),null);
+                IBaseItemContent.initView(convertView);
+                convertView.setTag(IBaseItemContent);
+            }
+
+            if(IBaseItemContent == null){
+                IBaseItemContent = (IBaseItemContent) convertView.getTag();
+            }
+            IBaseItemContent.bindData(list.get(position).k);
+            return convertView;
         }
     }
 
@@ -137,7 +156,26 @@ public class BaseMapListView extends LinearLayout {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return mMapItem.getValueItemView(convertView,list.get(keyClickPosition).list.get(position),position);
+            IBaseItemContent IBaseItemContent = null;
+            if(convertView == null){
+                if(getViewTypeCount() == 1){
+                    IBaseItemContent = mMapItem.getValueItem();
+                }
+//                else{
+//                    IBaseItemContent = loadItemContentByType(getItemViewType(position));
+//                }
+                convertView = LayoutInflater.from(parent.getContext()).inflate(IBaseItemContent.getView(),null);
+                IBaseItemContent.initView(convertView);
+                convertView.setTag(IBaseItemContent);
+            }
+
+            if(IBaseItemContent == null){
+                IBaseItemContent = (IBaseItemContent) convertView.getTag();
+            }
+
+            IBaseItemContent.bindData(list.get(keyClickPosition).list.get(position));
+
+            return convertView;
         }
     }
 
@@ -146,9 +184,9 @@ public class BaseMapListView extends LinearLayout {
 
         void onValueKeyClickListener(AdapterView<?> parent, View view, int position, long id,int keyPosition);
 
-        View getKeyItemView(View convertView,K k,int position);
+        IBaseItemContent getKeyItem();
 
-        View getValueItemView(View convertView ,T t,int position);
+        IBaseItemContent getValueItem();
 
     }
 }
