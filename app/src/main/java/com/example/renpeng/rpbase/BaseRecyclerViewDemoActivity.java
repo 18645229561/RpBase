@@ -1,10 +1,14 @@
 package com.example.renpeng.rpbase;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.renpeng.base.AbsListBaseActivity;
-import com.renpeng.base.adapter.IBaseItemContent;
-import com.renpeng.widge.BaseListView;
+import com.renpeng.base.AbsBaseActivity;
+import com.renpeng.widge.BaseMapListView;
+import com.renpeng.widge.entity.MapItemDataEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,24 +16,16 @@ import java.util.List;
 /**
  * Created by renpeng on 16/11/9.
  */
-public class BaseRecyclerViewDemoActivity extends AbsListBaseActivity {
-    BaseListView baseListView;
+public class BaseRecyclerViewDemoActivity extends AbsBaseActivity implements BaseMapListView.MapItem<String,String>{
+
+    private BaseMapListView baseMapListView;
 
     @Override
     protected void initView() {
-        initData();
+        baseMapListView = (BaseMapListView) findViewById(R.id.list);
+        baseMapListView.setMapItem(this);
         setActivityStatus(SUCCESS_STATUS);
-        baseListView = (BaseListView) findViewById(R.id.new_list);
-        baseListView.initRpBaseListView(this,this,list);
 
-    }
-
-    List<String> list = new ArrayList<>();
-
-    private void initData(){
-        for(int i = 0;i<500;i++){
-            list.add(i+"");
-        }
     }
 
     @Override
@@ -37,33 +33,44 @@ public class BaseRecyclerViewDemoActivity extends AbsListBaseActivity {
         return R.layout.test_new_listview;
     }
 
+
     @Override
-    public IBaseItemContent loadItemContent() {
-        return new demoAdapter();
+    public List<MapItemDataEntity<String,String>> getMapList() {
+        List<String> valueList = new ArrayList<>();
+        for(int i = 0;i<500;i++){
+            valueList.add(i+"");
+        }
+
+        List<MapItemDataEntity<String,String>> list = new ArrayList<>();
+        for(int i = 0;i<50;i++){
+            MapItemDataEntity<String,String> mapItemDataEntity = new MapItemDataEntity(i+"",valueList);
+            list.add(mapItemDataEntity);
+        }
+
+        return list;
+    }
+
+
+
+    @Override
+    public void onValueKeyClickListener(AdapterView<?> parent, View view, int position, long id ,int keyPosition) {
+        Toast.makeText(this,"onValueKeyClickListener" + keyPosition + "" + position,Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public IBaseItemContent loadItemContentByType(int type) {
-        return null;
+    public View getKeyItemView(View convertView, String s, int position) {
+        View view = LayoutInflater.from(this).inflate(R.layout.item,null);
+        TextView textView = (TextView) view.findViewById(R.id.rr);
+        textView.setText(s);
+        return view;
     }
 
     @Override
-    public int getBaseViewTypeCount() {
-        return 1;
+    public View getValueItemView(View convertView, String s, int position) {
+        View view = LayoutInflater.from(this).inflate(R.layout.item,null);
+        TextView textView = (TextView) view.findViewById(R.id.rr);
+        textView.setText(s);
+        return view;
     }
 
-    @Override
-    public int getBaseItemViewType(int position) {
-        return 0;
-    }
-
-    @Override
-    public void onClick() {
-        Toast.makeText(this,"onClick",Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onLongClick() {
-        Toast.makeText(this,"onLongClick",Toast.LENGTH_SHORT).show();
-    }
 }
