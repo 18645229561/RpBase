@@ -126,12 +126,9 @@ public class BaseListView extends LinearLayout {
                 convertView = LayoutInflater.from(parent.getContext()).inflate(IBaseItemContent.getView(),null);
                 IBaseItemContent.initView(convertView);
                 convertView.setTag(IBaseItemContent);
-            }
-
-            if(IBaseItemContent == null){
+            }else{
                 IBaseItemContent = (IBaseItemContent) convertView.getTag();
             }
-
             if(dataList != null && dataList.size() > 0 && dataList.get(position) != null){
                 IBaseItemContent.bindData(dataList.get(position));
             }

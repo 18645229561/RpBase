@@ -58,22 +58,31 @@ public class BaseRecyclerViewDemoActivity extends AbsBaseActivity implements Bas
 
     @Override
     public IBaseItemContent getKeyItem() {
-        return new demoAdapter();
-    }
-
-    @Override
-    public IBaseItemContent getKeyItemByType(int type) {
         return null;
     }
 
     @Override
+    public IBaseItemContent getKeyItemByType(int type) {
+        if(type == 2){
+            return new NewType();
+        }else{
+            return new demoAdapter();
+        }
+    }
+
+    @Override
     public int getKeyViewTypeCount() {
-        return 1;
+        return 2;
     }
 
     @Override
     public int getKeyViewType(int position) {
-        return 0;
+        if(position == 2){
+            return 2;
+        }else{
+            return 0;
+        }
+
     }
 
     @Override
@@ -84,6 +93,7 @@ public class BaseRecyclerViewDemoActivity extends AbsBaseActivity implements Bas
     @Override
     public IBaseItemContent getValueItemByType(int type) {
         return null;
+
     }
 
     @Override

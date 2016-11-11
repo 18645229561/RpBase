@@ -126,11 +126,10 @@ public class BaseMapListView extends LinearLayout {
                 convertView = LayoutInflater.from(parent.getContext()).inflate(IBaseItemContent.getView(),null);
                 IBaseItemContent.initView(convertView);
                 convertView.setTag(IBaseItemContent);
-            }
-
-            if(IBaseItemContent == null){
+            }else{
                 IBaseItemContent = (IBaseItemContent) convertView.getTag();
             }
+
             IBaseItemContent.bindData(list.get(position).k);
             return convertView;
         }
@@ -175,12 +174,9 @@ public class BaseMapListView extends LinearLayout {
                 convertView = LayoutInflater.from(parent.getContext()).inflate(IBaseItemContent.getView(),null);
                 IBaseItemContent.initView(convertView);
                 convertView.setTag(IBaseItemContent);
-            }
-
-            if(IBaseItemContent == null){
+            }else{
                 IBaseItemContent = (IBaseItemContent) convertView.getTag();
             }
-
             IBaseItemContent.bindData(list.get(keyClickPosition).list.get(position));
 
             return convertView;
