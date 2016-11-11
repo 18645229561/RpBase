@@ -57,8 +57,6 @@ public class BaseMapListView extends LinearLayout {
         valueListView = (ListView) findViewById(R.id.value_list);
         keyMapListAdapter = new MapKeyAdapter();
         valueMapListAdapter = new MapValueAdapter();
-        keyListView.setAdapter(keyMapListAdapter);
-        valueListView.setAdapter(valueMapListAdapter);
 
         keyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -79,6 +77,9 @@ public class BaseMapListView extends LinearLayout {
 
     public void setMapItem(MapItem mMapItem){
         this.mMapItem = mMapItem;
+        keyListView.setAdapter(keyMapListAdapter);
+        valueListView.setAdapter(valueMapListAdapter);
+
         notifyDataSetChanged();
     }
 
@@ -112,6 +113,11 @@ public class BaseMapListView extends LinearLayout {
         @Override
         public int getItemViewType(int position) {
             return mMapItem.getKeyViewType(position);
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return mMapItem.getKeyViewTypeCount();
         }
 
         @Override
@@ -160,6 +166,12 @@ public class BaseMapListView extends LinearLayout {
         @Override
         public int getItemViewType(int position) {
             return mMapItem.getValueViewType(position);
+        }
+
+
+        @Override
+        public int getViewTypeCount() {
+            return mMapItem.getValueViewTypeCount();
         }
 
         @Override
