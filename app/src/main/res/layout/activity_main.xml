@@ -9,9 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".test.TestDemoActivity">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="" />
+   <com.renpeng.widge.BannerView
+       android:id="@+id/banner"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+   </com.renpeng.widge.BannerView>
 </RelativeLayout>

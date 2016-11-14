@@ -1,52 +1,52 @@
 package com.example.renpeng.rpbase.test;
 
-import android.os.Handler;
-import android.os.Message;
+import android.graphics.Color;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.renpeng.rpbase.R;
-import com.example.renpeng.rpbase.util.RequestUtil;
 import com.renpeng.base.AbsBaseActivity;
+import com.renpeng.widge.BannerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by renpeng on 16/11/11.
  */
 public class RequestHttpTestActivity extends AbsBaseActivity {
 
-    TextView textView;
+    private BannerView mBannerView;
 
-    Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            textView.setText(request);
-            setActivityStatus(SUCCESS_STATUS);
-        }
-    };
-
-    String request;
-
+    private List<View> list = new ArrayList<>();
 
     @Override
     protected void initView() {
-        textView = getViewById(R.id.text);
-        request("https://www.baidu.com");
-
+        mBannerView = getViewById(R.id.banner);
+        initPagerView();
+        mBannerView.setViewList(list);
+        setActivityStatus(SUCCESS_STATUS);
     }
 
-    public void request(final String str){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                request = RequestUtil.requestHttpUrlConnection(str);
-                Message message = new Message();
-                message.arg1 = 111;
-                handler.sendMessage(message);
+    private void initPagerView(){
+        for(int i = 1;i<=4;i++){
+            TextView textView = new TextView(this);
+            if(i == 1){
+                textView.setBackgroundColor(Color.BLUE);
+            }else if(i == 2){
+                textView.setBackgroundColor(Color.RED);
+            }else if(i == 3){
+                textView.setBackgroundColor(Color.GRAY);
+            }else if(i == 4){
+                textView.setBackgroundColor(Color.GREEN);
             }
-        }).start();
+
+            textView.setHeight(200);
+            textView.setText(i+"");
+            list.add(textView);
+        }
 
     }
-
     @Override
     protected int loadContentView() {
         return R.layout.activity_main;
