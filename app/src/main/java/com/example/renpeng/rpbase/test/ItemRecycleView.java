@@ -1,10 +1,11 @@
-package com.example.renpeng.rpbase;
+package com.example.renpeng.rpbase.test;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.renpeng.rpbase.R;
 import com.renpeng.base.adapter.IBaseRecyclerViewItem;
 
 /**

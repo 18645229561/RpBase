@@ -1,30 +1,30 @@
-package com.example.renpeng.rpbase;
+package com.example.renpeng.rpbase.test;
 
 import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.renpeng.rpbase.R;
 import com.renpeng.base.adapter.IBaseItemContent;
 
 /**
- * Created by renpeng on 16/11/10.
+ * Created by renpeng on 16/11/8.
  */
-public class NewType implements IBaseItemContent<String> {
+public class demoAdapter implements IBaseItemContent<String> {
     TextView textView;
     @Override
     public void initView(View convertView) {
-
-        textView = (TextView) convertView.findViewById(R.id.fdfd);
+        textView = (TextView) convertView.findViewById(R.id.rr);
     }
 
     @Override
     public int getView() {
-        return R.layout.a_type_item;
+        return R.layout.item;
     }
 
     @Override
     public void bindData(String s) {
+        textView.setTextColor(Color.BLUE);
         textView.setText(s);
-        textView.setTextColor(Color.RED);
     }
 }

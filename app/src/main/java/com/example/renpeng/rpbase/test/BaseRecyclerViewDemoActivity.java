@@ -1,9 +1,10 @@
-package com.example.renpeng.rpbase;
+package com.example.renpeng.rpbase.test;
 
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.example.renpeng.rpbase.R;
 import com.renpeng.base.AbsBaseActivity;
 import com.renpeng.base.adapter.IBaseItemContent;
 import com.renpeng.widge.BaseMapListView;

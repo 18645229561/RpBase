@@ -70,4 +70,9 @@ public class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseRecyclerVi
 
         void onLongClick();
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
 }
