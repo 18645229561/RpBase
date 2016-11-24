@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".test.RequestHttpTestActivity">
+        <activity android:name=".test.BaseRecyclerViewDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

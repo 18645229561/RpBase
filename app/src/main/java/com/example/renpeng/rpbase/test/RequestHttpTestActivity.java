@@ -22,7 +22,7 @@ public class RequestHttpTestActivity extends AbsBaseActivity {
 
     @Override
     protected void initView() {
-        mBannerView = getViewById(R.id.banner);
+//        mBannerView = getViewById(R.id.banner);
         initPagerView();
         mBannerView.setViewList(list);
         setActivityStatus(SUCCESS_STATUS);

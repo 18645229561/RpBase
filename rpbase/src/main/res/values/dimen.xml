@@ -2,7 +2,8 @@
 <resources>
     <!--dp-->
     <dimen name="common_200_dp">200dp</dimen>
-
+    <dimen name="common_30_dp">30dp</dimen>
+    <dimen name="common_60_dp">60dp</dimen>
     <!--sp-->
     <dimen name="common_28_sp">28sp</dimen>
 </resources>
